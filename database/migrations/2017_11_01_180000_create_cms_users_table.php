@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+//use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateCmsUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('cms_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->integer('contact_id')->unsigned();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('deletable')->default(true);
             $table->timestamps();
+
+            $table->foreign('contact_id')->references('id')->on('contacts');
         });
     }
 
@@ -30,6 +32,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('cms_users');
+        Schema::enableForeignKeyConstraints();
     }
 }
