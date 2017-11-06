@@ -4,7 +4,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCmsUsersTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateCmsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms_users', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contact_id')->unsigned();
+            $table->string('name');
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
             $table->boolean('deletable')->default(true);
             $table->timestamps();
-
-            $table->foreign('contact_id')->references('id')->on('contacts');
         });
     }
 
@@ -32,8 +31,6 @@ class CreateCmsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('cms_users');
-        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('admins');
     }
 }
