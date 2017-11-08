@@ -14,6 +14,8 @@
 // Portfolio (Home) Routes
 Route::get('/', 'PortfolioController@index')->name('portfolio.home');
 
+Route::get('/language/{lang}', 'LanguageController@switchLanguage')->name('lang.switch');
+
 // CV Routes
 Route::group(['prefix' => 'cv'], function () {
     Route::get('/', 'CvController@index')->name('cv.home');
@@ -23,7 +25,7 @@ Route::group(['prefix' => 'cv'], function () {
 Route::group(['prefix' => 'bnb'], function () {
 // Authentication Routes...
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('/login', 'Auth\LoginController@login');
+    Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/', 'BnbController@index')->name('bnb.home');
 });
