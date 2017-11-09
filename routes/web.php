@@ -35,5 +35,12 @@ Route::group(['prefix' => 'cms'], function () {
     Route::get('/login', 'Auth\AdminLoginController@showLogin')->name('cms.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('cms.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('cms.logout');
+
+    Route::group(['prefix' => 'pages'], function () {
+        Route::get('/{pageName}/tabs', 'CmsController@getTabs')->name('cms.pages.tabs');
+        Route::post('/{pageName}', 'CmsController@editPage')->name('cms.pages.change');
+        Route::get('/', 'CmsController@getPages')->name('cms.pages');
+    });
+
     Route::get('/', 'CmsController@index')->name('cms.home');
 });
