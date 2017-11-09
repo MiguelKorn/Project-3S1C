@@ -13,6 +13,7 @@ class BnbController extends Controller
 
     public function index()
     {
-        return view('bnb');
+
+        return view('pages.bnb');
     }
 }

@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">ADMIN Dashboard</div>
-
                     <div class="panel-body">
-                        @component('components.role')
-                        @endcomponent
+                        @foreach ($pages as $page)
+                            <a href="{{ route('cms.pages.tabs', $page->name) }}">page {{ $page->name }}</a>
+                            <br>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -15,8 +15,13 @@ class CreateTabsTable extends Migration
     {
         Schema::create('tabs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('page_id')->unsigned();
             $table->integer('image_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('page_id')
+                ->references('id')
+                ->on('pages');
 
             $table->foreign('image_id')
                 ->references('id')
