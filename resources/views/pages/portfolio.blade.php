@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel">
-                        <h1>Portfolio</h1>
+                        <h1>{{$page->name}}</h1>
                         {{ App::getLocale() }}
                     </div>
                 </div>
