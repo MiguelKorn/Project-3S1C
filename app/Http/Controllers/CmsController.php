@@ -54,7 +54,7 @@ class CmsController extends Controller
         }
     }
 
-    public function editPage($pageName)
+    public function editTab($pageName)
     {
         $data = request()->all();
         $tab = TabTranslation::where([['tab_id', '=', $data['tab']], ['locale', '=' , $data['lang']]])->first();
@@ -62,6 +62,6 @@ class CmsController extends Controller
         $tab->text = $data['desc'];
         $tab->save();
 
-        return redirect()->route('cms.page', $pageName);
+        return redirect()->route('cms.pages.tabs', $pageName);
     }
 }

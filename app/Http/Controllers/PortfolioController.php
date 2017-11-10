@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('pages.portfolio');
+        $page = Page::where('name', 'portfolio')->first();
+
+        return view('pages.portfolio', compact('page'));
     }
 }
