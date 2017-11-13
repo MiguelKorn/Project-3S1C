@@ -11,17 +11,15 @@ class TabController extends CmsController
 {
     public function getTabs($pageName)
     {
-        $page = Page::where('name', $pageName)->first();
-        if ($page !== null) {
-            $tabs = $page->tabs()->get();
-
+        if ($this->checkPage($pageName)) {
+            $tabs = Page::where('name', $pageName)->first()->tabs()->get();
             foreach ($tabs as $tab) {
-                $tab['translations'] = Tab::find($tab->id)->translations()->get();
+                $tab['translations'] = Tab::find($tab->id)->translations()->orderBy('locale')->get();
             }
 
-            return view('cms.tabs', compact('page', 'tabs'));
+            return view('cms.tabs', compact('pageName', 'tabs'));
         } else {
-            return redirect()->route('cms.home');
+            return redirect()->back();
         }
     }
 

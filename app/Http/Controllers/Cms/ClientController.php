@@ -10,11 +10,8 @@ use Illuminate\Http\Request;
 class ClientController extends CmsController
 {
     protected $allowedPages = ['portfolio'];
-    //    show all
-    //    show one
-    //    edit
-    //    create
-    //    delete
+
+
     public function showAll($pageName)
     {
         if ($this->checkPage($pageName)) {
@@ -58,7 +55,7 @@ class ClientController extends CmsController
         $cNL->locale = 'nl';
         $cNL->name = $data['name-nl'];
         $cNL->save();
-        
+
         $cEN = new ClientTranslation();
         $cEN->client_id = $client->id;
         $cEN->locale = 'en';
@@ -85,11 +82,11 @@ class ClientController extends CmsController
         $client = Client::where('id', $clientID)->first();
         $client->url = $data['url'];
         $client->save();
-            
+
         $cNL = $client->translations()->where('locale', 'nl')->first();
         $cNL->name = $data['name-nl'];
         $cNL->save();
-        
+
         $cEN = $client->translations()->where('locale', 'en')->first();
         $cEN->name = $data['name-en'];
         $cEN->save();
@@ -101,7 +98,7 @@ class ClientController extends CmsController
     {
         $client = Client::where('id', $clientID)->first();
 
-        if($client->delete()) {
+        if ($client->delete()) {
             return redirect()->route('cms.clients', compact('pageName'));
         }
     }

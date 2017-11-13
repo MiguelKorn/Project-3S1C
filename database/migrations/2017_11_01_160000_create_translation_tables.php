@@ -19,7 +19,6 @@ class CreateTranslationTables extends Migration
             $table->char('locale', 2);
 
             $table->string('name');
-            $table->text('description');
 
             $table->foreign('client_id')
                 ->references('id')

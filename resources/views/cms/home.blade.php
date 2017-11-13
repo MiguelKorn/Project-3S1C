@@ -12,9 +12,9 @@
 
                         <div class="list-group">
                             <a href="{{route('cms.pages')}}" class="list-group-item list-group-item-action">Edit Pages</a>
-                            <a href="{{route('cms.pages.tabs', 'portfolio')}}" class="list-group-item list-group-item-action">Edit Portfolio</a>
-                            <a href="{{route('cms.pages.tabs', 'bnb')}}" class="list-group-item list-group-item-action">Edit BnB</a>
-                            <a href="{{route('cms.pages.tabs', 'cv')}}" class="list-group-item list-group-item-action">Edit CV</a>
+                            <a href="{{route('cms.pages.page', 'portfolio')}}" class="list-group-item list-group-item-action">Edit Portfolio</a>
+                            <a href="{{route('cms.pages.page', 'bnb')}}" class="list-group-item list-group-item-action">Edit BnB</a>
+                            <a href="{{route('cms.pages.page', 'cv')}}" class="list-group-item list-group-item-action">Edit CV</a>
                         </div>
                     </div>
                 </div>

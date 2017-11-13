@@ -16,7 +16,6 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url');
-            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }
