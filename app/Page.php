@@ -8,4 +8,9 @@ class Page extends \Eloquent
     {
         return $this->hasMany('App\Tab');
     }
+
+    public function projects()
+    {
+        return $this->hasMany('App\Project');
+    }
 }

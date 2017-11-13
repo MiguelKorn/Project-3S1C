@@ -6,9 +6,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        @foreach ($pages as $page)
-                            <a href="{{ route('cms.pages.page', $page->name) }}">page {{ $page->name }}</a>
-                            <br>
+                        @foreach($project->translations as $translation)
+                            <p>{{$translation->title}}</p>
                         @endforeach
                     </div>
                 </div>
