@@ -15,14 +15,14 @@ class CreateExperiencesTable extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_id')->unsigned();
+            $table->integer('group_id')->unsigned();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->timestamps();
 
-            $table->foreign('type_id')
+            $table->foreign('group_id')
                 ->references('id')
-                ->on('types');
+                ->on('groups');
         });
     }
 
